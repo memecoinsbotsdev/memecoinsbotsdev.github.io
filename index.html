@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Trading Bots</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #1a1a1a;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 1400px;
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+    header p {
+      font-size: 18px;
+      color: #ccc;
+    }
+    .bot-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 15px;
+    }
+    .bot-item {
+      width: 260px;
+      text-align: center;
+      background-color: #333;
+      padding: 15px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .bot-item:hover {
+      transform: translateY(-5px);
+    }
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #fff;
+      margin: 0 auto 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .icon-buy { background-color: #00cc00; }
+    .icon-copy { background-color: #0077ff; }
+    .icon-filter { background-color: #aa00ff; }
+    .icon-sell { background-color: #ff0000; }
+    .icon-decline { background-color: #ff9900; }
+    .icon-alert { background-color: #00ffcc; }
+    .icon-sniper { background-color: #ff00ff; }
+    .icon-notify { background-color: #ffcc00; }
+    .icon-protect { background-color: #cc00ff; }
+    .icon-swing { background-color: #00ccff; }
+    h2 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 13px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Custom Trading Bots</h1>
+      <p>Advanced automation for your Solana trading strategies</p>
+    </header>
+    <div class="bot-list">
+      <!-- Original Offerings -->
+      <div class="bot-item">
+        <div class="icon icon-buy">↑</div>
+        <h2>Buy on Dev Sell Strategy Bot</h2>
+        <p>Automate buying when developers sell tokens</p>
+      </div>
+      <div class="bot-item">
+        <div class="icon icon-copy">⇄</div>
+        <h2>Fast Wallet Copy Trading Bot</h2>
+        <p>Instantly copy trades from top wallets</p>
+      </div>
+      <div class="bot-item">
+        <div class="icon icon-filter">🔍</div>
+        <h2>Memecoin Filtering Extension</h2>
+        <p>Quickly filter and identify new memecoins</p>
+      </div>
+      <div class="bot-item">
+        <div class="icon icon-sell">↓</div>
+        <h2>Sell on Dev Sell Bot</h2>
+        <p>Automatically sell when devs sell tokens</p>
+      </div>
+      <div class="bot-item">
+        <div class="icon icon-decline">📉</div>
+        <h2>Sell on Market Decline by X%</h2>
+        <p>Sell when market drops by a set percentage</p>
+      </div>
+      <!-- New Telegram-Integrated Offerings -->
+      <div class="bot-item">
+        <div class="icon icon-alert">🔔</div>
+        <h2>Telegram Dev Activity Alert</h2>
+        <p>Real-time Telegram alerts for dev wallet moves</p>
+      </div>
+      <div class="bot-item">
+        <div class="icon icon-sniper">🎯</div>
+        <h2>Telegram Wallet Trade Sniper</h2>
+        <p>Copy and execute trades via Telegram commands</p>
+      </div>
+      <div class="bot-item">
+        <div class="icon icon-notify">📩</div>
+        <h2>Telegram Memecoin Launch Notifier</h2>
+        <p>Get Telegram alerts for new memecoin launches</p>
+      </div>
+      <div class="bot-item">
+        <div class="icon icon-protect">🛡️</div>
+        <h2>Telegram Dev Dump Protector</h2>
+        <p>Telegram warnings for potential dev dumps</p>
+      </div>
+      <div class="bot-item">
+        <div class="icon icon-swing">↕</div>
+        <h2>Telegram Market Swing Trader</h2>
+        <p>Trade market swings with Telegram triggers</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
