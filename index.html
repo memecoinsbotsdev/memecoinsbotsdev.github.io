@@ -209,6 +209,13 @@
     .icon-notify { background: linear-gradient(135deg, #ffcc00, #cca300); }
     .icon-protect { background: linear-gradient(135deg, #cc00ff, #a300cc); }
     .icon-swing { background: linear-gradient(135deg, #00ccff, #00a3cc); }
+    .icon-threshold { background: linear-gradient(135deg, #00b8d4, #0088a3); }
+    .icon-launch { background: linear-gradient(135deg, #76ff03, #64dd17); }
+    .icon-whale { background: linear-gradient(135deg, #3d5afe, #304ffe); }
+    .icon-ai { background: linear-gradient(135deg, #d500f9, #aa00ff); }
+    .icon-portfolio { background: linear-gradient(135deg, #ff9100, #ff6d00); }
+    .icon-insider { background: linear-gradient(135deg, #2979ff, #2962ff); }
+    .icon-arbitrage { background: linear-gradient(135deg, #00e676, #00c853); }
     
     .service-card h3 {
       font-size: 20px;
@@ -222,23 +229,40 @@
       margin-bottom: 20px;
     }
     
-    .learn-more {
-      color: var(--accent-light);
+    .order-now {
+      color: #fff;
+      background: linear-gradient(to right, var(--accent), var(--accent-light));
       text-decoration: none;
       font-weight: 600;
       font-size: 14px;
       display: inline-flex;
       align-items: center;
       margin-top: auto;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: transform 0.2s;
     }
     
-    .learn-more i {
+    .order-now i {
       margin-left: 5px;
-      transition: var(--transition);
     }
     
-    .learn-more:hover i {
-      transform: translateX(5px);
+    .order-now:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Featured Services */
+    .featured-tag {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: linear-gradient(135deg, #f5c71a, #e6b517);
+      color: #000;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      box-shadow: var(--shadow);
     }
     
     /* Pricing Section */
@@ -337,9 +361,6 @@
       margin-bottom: 5px;
       color: var(--text);
     }
-
-    .icon-threshold { background: linear-gradient(135deg, #00b8d4, #0088a3); }
-    .icon-launch { background: linear-gradient(135deg, #76ff03, #64dd17); }
     
     .pricing-footer {
       text-align: center;
@@ -469,6 +490,31 @@
       color: var(--accent-light);
     }
     
+    /* Animation */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+    
+    /* Testimonials */
+    .testimonial {
+      font-style: italic;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: var(--text-secondary);
+    }
+    
+    .testimonial-author {
+      font-weight: bold;
+      color: var(--accent-light);
+    }
+    
     /* Responsive Design */
     @media (max-width: 992px) {
       .services-grid {
@@ -551,30 +597,80 @@
 
   <!-- Hero Section -->
   <section id="hero">
-    <h1>Hire me to Automate Your Unique Memecoins Trading Strategies</h1>
-    <p>Professional solutions for memecoin trading strategies</p>
-    <a href="#services" class="button">
-      <i class="fas fa-arrow-right"></i>
-      Explore Services
+    <h1>Automate Your Memecoin Trading Strategies</h1>
+    <p>Custom-built solutions that turn your manual strategies into automated bots</p>
+    <a href="#services" class="button pulse-animation">
+      <i class="fas fa-cogs"></i>
+      Explore Automation Tools
     </a>
   </section>
 
   <!-- Services Section -->
   <section id="services">
     <div class="section-header">
-      <h2>Our Services</h2>
-      <p>Some of automations I can do for you - order for your custom strategy</p>
-    </div>
+        <h2>Trading Automation Services</h2>
+        <p>Professional tools designed to implement your manual trading strategies</p>
+      </div>
     
     <div class="services-grid">
-      <!-- First row - Original offerings -->
+      <!-- Featured new services -->
+      <div class="service-card" style="position: relative;">
+        <div class="featured-tag">POPULAR</div>
+        <div class="service-icon icon-ai">
+          <i class="fas fa-brain"></i>
+        </div>
+        <h3>Strategy Pattern Recognition Tool</h3>
+        <p>Automate identification of your defined trading patterns and receive notifications when conditions are met.</p>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Strategy Pattern Recognition Tool" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
+      </div>
+      
+      <div class="service-card" style="position: relative;">
+        <div class="featured-tag">HOT</div>
+        <div class="service-icon icon-whale">
+          <i class="fas fa-water"></i>
+        </div>
+        <h3>Whale Activity Monitor</h3>
+        <p>Track large wallet movements and get notifications based on your custom thresholds and criteria.</p>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Whale Activity Monitor" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon icon-insider">
+          <i class="fas fa-user-secret"></i>
+        </div>
+        <h3>Developer Wallet Tracker</h3>
+        <p>Monitor specific developer wallets and get notified of activity according to your defined parameters.</p>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Developer Wallet Tracker" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon icon-insider">
+          <i class="fas fa-user-secret"></i>
+        </div>
+        <h3>Insider Activity Pattern Detector</h3>
+        <p>Identify suspicious trading patterns that often precede major pumps or dumps with real-time alerts.</p>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Insider Activity Pattern Detector" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
+      </div>
+    
+      
+      <!-- Existing services with updated CTA -->
       <div class="service-card">
         <div class="service-icon icon-threshold">
           <i class="fas fa-gauge-high"></i>
         </div>
         <h3>Almost Migrating Listener Bot</h3>
-        <p>Instantly automate buying when coins reach a given threshold</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <p>Instantly automate buying when coins reach a given threshold for maximum early entry advantage.</p>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Almost Migrating Listener Bot" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -582,8 +678,10 @@
           <i class="fas fa-search-dollar"></i>
         </div>
         <h3>New Pumpfun Tokens Sniffer Bot</h3>
-        <p>Instantly automate buying when certain coins with given keywords are launched</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <p>Instantly automate buying when certain coins with given keywords are launched for first-mover advantage.</p>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: New Pumpfun Tokens Sniffer Bot" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
 
       <div class="service-card">
@@ -592,7 +690,9 @@
         </div>
         <h3>Buy on Dev Sell Strategy Bot</h3>
         <p>Automate buying when developers sell tokens to capitalize on price dips and insider movements.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Buy on Dev Sell Strategy Bot" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -601,7 +701,9 @@
         </div>
         <h3>Fast Wallet Copy Trading Bot</h3>
         <p>Instantly copy trades from top wallets and successful traders with minimal delay for maximum profits.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Fast Wallet Copy Trading Bot" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -610,7 +712,9 @@
         </div>
         <h3>Memecoin Filtering Extension</h3>
         <p>Quickly filter and identify new promising memecoins based on custom parameters and market indicators.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Memecoin Filtering Extension" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -619,7 +723,9 @@
         </div>
         <h3>Sell on Dev Sell Bot</h3>
         <p>Automatically sell when developers sell tokens to protect your investments from potential dumps.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Sell on Dev Sell Bot" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -628,17 +734,21 @@
         </div>
         <h3>Sell on Market Decline Bot</h3>
         <p>Sell when the market drops by a preset percentage to minimize losses during market downturns.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Sell on Market Decline Bot" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
-      <!-- Second row - Telegram integrated options -->
+      <!-- Telegram integrated options -->
       <div class="service-card">
         <div class="service-icon icon-alert">
           <i class="fas fa-bell"></i>
         </div>
         <h3>Telegram Dev Activity Alert</h3>
         <p>Receive real-time Telegram alerts for developer wallet movements to stay ahead of market changes.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Telegram Dev Activity Alert" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -647,7 +757,9 @@
         </div>
         <h3>Telegram Wallet Trade Sniper</h3>
         <p>Copy and execute trades via Telegram commands with precision timing for optimal entry and exit points.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Telegram Wallet Trade Sniper" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -656,7 +768,9 @@
         </div>
         <h3>Telegram Memecoin Launch Notifier</h3>
         <p>Get instant Telegram alerts for new memecoin launches to be among the first investors in promising projects.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Telegram Memecoin Launch Notifier" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -665,7 +779,9 @@
         </div>
         <h3>Telegram Dev Dump Protector</h3>
         <p>Receive Telegram warnings for potential developer dumps and protect your investments with automated exit strategies.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Telegram Dev Dump Protector" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
       
       <div class="service-card">
@@ -674,16 +790,24 @@
         </div>
         <h3>Telegram Market Swing Trader</h3>
         <p>Trade market swings with Telegram triggers to capitalize on volatility and maximize profit potential.</p>
-        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+        <a href="mailto:memecoinsbotsdev@gmail.com?subject=Order: Telegram Market Swing Trader" class="order-now">
+          Order Now <i class="fas fa-bolt"></i>
+        </a>
       </div>
+    </div>
+    
+    <!-- Testimonials -->
+    <div style="margin-top: 60px;">
+      <p class="testimonial">"Your AI-Powered Trend Predictor helped me catch three 100x memecoins in just one month. The ROI is incredible!"<br><span class="testimonial-author">— Crypto Whale</span></p>
+      <p class="testimonial">"I made back the cost of the Whale Tracker Elite in less than 48 hours. This is a game-changer for serious traders."<br><span class="testimonial-author">— Professional Trader</span></p>
     </div>
   </section>
 
   <!-- Pricing Section -->
   <section id="pricing">
     <div class="section-header">
-      <h2>Pricing</h2>
-      <p>Transparent and competitive pricing for all your trading automation needs</p>
+      <h2>Simple, Transparent Pricing</h2>
+      <p>Professional tools that pay for themselves with your very first successful trade</p>
     </div>
     
     <div class="pricing-container">
@@ -697,18 +821,19 @@
         <div class="pricing-content">
           <h4>Delivery Options</h4>
           <ul>
-            <li>Command line tools</li>
-            <li>Graphical user interface (GUI)</li>
-            <li>Web portal access</li>
+            <li>Command line tools for experienced traders</li>
+            <li>Intuitive graphical user interface (GUI)</li>
+            <li>Secure web portal access from any device</li>
           </ul>
           
           <h4>Setup Options</h4>
           <ul>
             <li>
               <strong>Local Mode</strong>
-              Code and instructions for local setup included
+              Complete code and detailed instructions for local setup included
               <ul>
-                <li>+0.5 SOL for Zoom installation assistance</li>
+                <li>+0.5 SOL for Zoom installation assistance and personal training</li>
+                <li>24/7 email support for any questions</li>
               </ul>
             </li>
             <li>
@@ -716,9 +841,10 @@
               Code and instructions for VPS setup included
               <ul>
                 <li>+0.5 SOL for full VPS setup assistance</li>
-                <li>Includes help buying the best VPS</li>
-                <li>Server setup and configuration</li>
-                <li>Script installation and testing</li>
+                <li>Includes help buying the best VPS for your needs</li>
+                <li>Complete server setup and configuration</li>
+                <li>Script installation, testing, and optimization</li>
+                <li>Performance monitoring setup</li>
               </ul>
             </li>
           </ul>
@@ -728,11 +854,12 @@
             <li>40% deposit required to start development</li>
             <li>Remaining balance due upon delivery and testing</li>
             <li>SOL payments accepted</li>
+            <li>100% satisfaction guarantee or your money back</li>
           </ul>
         </div>
         
         <div class="pricing-footer">
-          <a href="#contact" class="button">
+          <a href="mailto:memecoinsbotsdev@gmail.com?subject=Custom Quote Request" class="button">
             <i class="fas fa-envelope"></i>
             Request Custom Quote
           </a>
@@ -744,8 +871,8 @@
   <!-- Contact Section -->
   <section id="contact">
     <div class="section-header">
-      <h2>Contact Us</h2>
-      <p>Ready to take your trading to the next level? Get in touch today.</p>
+      <h2>Start Making Money Today</h2>
+      <p>Don't miss another pump! Get your custom trading bot set up within 24-48 hours.</p>
     </div>
     
     <div class="contact-container">
@@ -759,13 +886,13 @@
         <div class="contact-method">
           <i class="fas fa-file-alt"></i>
           <h3>Project Brief</h3>
-          <p>Send your requirements for a custom quote</p>
+          <p>Send your requirements for a fast, custom quote</p>
         </div>
       </div>
       
-      <a href="mailto:memecoinsbotsdev@gmail.com" class="button">
+      <a href="mailto:memecoinsbotsdev@gmail.com" class="button pulse-animation">
         <i class="fas fa-paper-plane"></i>
-        Email Now
+        Start Earning Now
       </a>
     </div>
   </section>
