@@ -3,150 +3,775 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Trading Bots</title>
+  <title>Memecoins Bots Dev | Professional Trading Automation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --background: #1a1a1a;
+      --card-bg: #2a2a2a;
+      --nav-bg: #222;
+      --text: #e0e0e0;
+      --text-secondary: #ccc;
+      --accent: #800080;
+      --accent-light: #a020f0;
+      --transition: all 0.3s ease;
+      --shadow: 0 4px 8px rgba(0,0,0,0.3);
+      --card-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      --hover-shadow: 0 0 15px var(--accent);
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    
     body {
-      background-color: #1a1a1a;
+      background-color: var(--background);
+      color: var(--text);
       font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    
+    /* Navigation Bar */
+    nav {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .container {
-      width: 1400px;
-      background-color: #2a2a2a;
-      color: #e0e0e0;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    header h1 {
-      font-size: 36px;
-      margin-bottom: 8px;
-    }
-    header p {
-      font-size: 18px;
-      color: #ccc;
-    }
-    .bot-list {
-      display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 15px;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: var(--nav-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
     }
-    .bot-item {
-      width: 260px;
+    
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    
+    nav .logo i {
+      margin-right: 10px;
+      color: var(--accent-light);
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+    }
+    
+    nav ul li a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+    
+    nav ul li a:hover {
+      color: var(--accent-light);
+    }
+    
+    .button {
+      background: linear-gradient(to right, var(--accent), var(--accent-light));
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+    
+    .button i {
+      margin-right: 8px;
+    }
+    
+    .button:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Hero Section */
+    #hero {
       text-align: center;
-      background-color: #333;
-      padding: 15px;
+      padding: 100px 20px 60px;
+      background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.9)), url('/api/placeholder/1400/500');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    #hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    #hero p {
+      font-size: 24px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    /* Services Section */
+    #services {
+      padding: 80px 40px;
+      background-color: var(--background);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-header h2 {
+      font-size: 36px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent), var(--accent-light));
+      bottom: 0;
+      left: 20%;
+    }
+    
+    .section-header p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 10px auto 0;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .service-card {
+      background-color: var(--card-bg);
+      padding: 30px 20px;
       border-radius: 10px;
-      transition: transform 0.3s ease;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--card-shadow);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .bot-item:hover {
-      transform: translateY(-5px);
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--hover-shadow);
     }
-    .icon {
-      width: 50px;
-      height: 50px;
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 30px;
       color: #fff;
-      margin: 0 auto 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      margin: 0 auto 20px;
+      box-shadow: var(--shadow);
     }
-    .icon-buy { background-color: #00cc00; }
-    .icon-copy { background-color: #0077ff; }
-    .icon-filter { background-color: #aa00ff; }
-    .icon-sell { background-color: #ff0000; }
-    .icon-decline { background-color: #ff9900; }
-    .icon-alert { background-color: #00ffcc; }
-    .icon-sniper { background-color: #ff00ff; }
-    .icon-notify { background-color: #ffcc00; }
-    .icon-protect { background-color: #cc00ff; }
-    .icon-swing { background-color: #00ccff; }
-    h2 {
+    
+    .icon-buy { background: linear-gradient(135deg, #00cc00, #009900); }
+    .icon-copy { background: linear-gradient(135deg, #0077ff, #005ecc); }
+    .icon-filter { background: linear-gradient(135deg, #aa00ff, #8800cc); }
+    .icon-sell { background: linear-gradient(135deg, #ff0000, #cc0000); }
+    .icon-decline { background: linear-gradient(135deg, #ff9900, #cc7a00); }
+    .icon-alert { background: linear-gradient(135deg, #00ffcc, #00ccaa); }
+    .icon-sniper { background: linear-gradient(135deg, #ff00ff, #cc00cc); }
+    .icon-notify { background: linear-gradient(135deg, #ffcc00, #cca300); }
+    .icon-protect { background: linear-gradient(135deg, #cc00ff, #a300cc); }
+    .icon-swing { background: linear-gradient(135deg, #00ccff, #00a3cc); }
+    
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+    
+    .service-card p {
       font-size: 16px;
-      margin-bottom: 8px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
     }
-    p {
-      font-size: 13px;
-      color: #ccc;
+    
+    .learn-more {
+      color: var(--accent-light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      margin-top: auto;
+    }
+    
+    .learn-more i {
+      margin-left: 5px;
+      transition: var(--transition);
+    }
+    
+    .learn-more:hover i {
+      transform: translateX(5px);
+    }
+    
+    /* Pricing Section */
+    #pricing {
+      padding: 80px 40px;
+      background-color: var(--card-bg);
+    }
+    
+    .pricing-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .pricing-box {
+      background-color: var(--background);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pricing-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent), var(--accent-light));
+    }
+    
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .pricing-header h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: var(--accent-light);
+    }
+    
+    .price {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    
+    .price span {
+      font-size: 24px;
+      vertical-align: super;
+    }
+    
+    .price-caption {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }
+    
+    .pricing-content {
+      margin-top: 30px;
+    }
+    
+    .pricing-content h4 {
+      font-size: 22px;
+      margin: 25px 0 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #444;
+      color: var(--accent-light);
+    }
+    
+    .pricing-content ul {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    
+    .pricing-content ul li {
+      margin-bottom: 12px;
+      padding-left: 25px;
+      position: relative;
+    }
+    
+    .pricing-content ul li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--accent-light);
+    }
+    
+    .pricing-content ul li strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+    }
+    
+    .pricing-footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    /* Contact Section */
+    #contact {
+      text-align: center;
+      padding: 80px 40px;
+      background-color: var(--background);
+    }
+    
+    .contact-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .contact-methods {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .contact-method {
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: 10px;
+      flex: 1;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+    
+    .contact-method:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--hover-shadow);
+    }
+    
+    .contact-method i {
+      font-size: 30px;
+      color: var(--accent-light);
+      margin-bottom: 15px;
+    }
+    
+    .contact-method h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .contact-method p, .contact-method a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .contact-method a:hover {
+      color: var(--accent-light);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--nav-bg);
+      padding: 30px 40px;
+      text-align: center;
+    }
+    
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo {
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-logo i {
+      margin-right: 10px;
+      color: var(--accent-light);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #333;
+      color: var(--text);
+      font-size: 18px;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    
+    .payment-info {
+      display: flex;
+      align-items: center;
+    }
+    
+    .payment-info i {
+      margin-right: 10px;
+      color: var(--accent-light);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      
+      .contact-methods {
+        flex-direction: column;
+      }
+      
+      .footer-top, .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 15px;
+      }
+      
+      nav ul {
+        margin: 15px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      #hero h1 {
+        font-size: 36px;
+      }
+      
+      #hero p {
+        font-size: 18px;
+      }
+      
+      .section-header h2 {
+        font-size: 28px;
+      }
+      
+      .pricing-box {
+        padding: 30px 20px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      
+      .pricing-header h3 {
+        font-size: 24px;
+      }
+      
+      .price {
+        font-size: 36px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Custom Trading Bots</h1>
-      <p>Advanced automation for your Solana trading strategies</p>
-    </header>
-    <div class="bot-list">
-      <!-- Original Offerings -->
-      <div class="bot-item">
-        <div class="icon icon-buy">↑</div>
-        <h2>Buy on Dev Sell Strategy Bot</h2>
-        <p>Automate buying when developers sell tokens</p>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">
+      <i class="fas fa-robot"></i>
+      Memecoins Bots Dev
+    </div>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="button">
+      <i class="fas fa-rocket"></i>
+      Get Started
+    </a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <h1>Automate Your Trading with Custom Bots</h1>
+    <p>Professional solutions for Solana memecoin trading strategies</p>
+    <a href="#services" class="button">
+      <i class="fas fa-arrow-right"></i>
+      Explore Services
+    </a>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <p>Advanced trading bots designed to maximize your profits</p>
+    </div>
+    
+    <div class="services-grid">
+      <!-- First row - Original offerings -->
+      <div class="service-card">
+        <div class="service-icon icon-buy">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Buy on Dev Sell Strategy Bot</h3>
+        <p>Automate buying when developers sell tokens to capitalize on price dips and insider movements.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="bot-item">
-        <div class="icon icon-copy">⇄</div>
-        <h2>Fast Wallet Copy Trading Bot</h2>
-        <p>Instantly copy trades from top wallets</p>
+      
+      <div class="service-card">
+        <div class="service-icon icon-copy">
+          <i class="fas fa-sync-alt"></i>
+        </div>
+        <h3>Fast Wallet Copy Trading Bot</h3>
+        <p>Instantly copy trades from top wallets and successful traders with minimal delay for maximum profits.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="bot-item">
-        <div class="icon icon-filter">🔍</div>
-        <h2>Memecoin Filtering Extension</h2>
-        <p>Quickly filter and identify new memecoins</p>
+      
+      <div class="service-card">
+        <div class="service-icon icon-filter">
+          <i class="fas fa-filter"></i>
+        </div>
+        <h3>Memecoin Filtering Extension</h3>
+        <p>Quickly filter and identify new promising memecoins based on custom parameters and market indicators.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="bot-item">
-        <div class="icon icon-sell">↓</div>
-        <h2>Sell on Dev Sell Bot</h2>
-        <p>Automatically sell when devs sell tokens</p>
+      
+      <div class="service-card">
+        <div class="service-icon icon-sell">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+        <h3>Sell on Dev Sell Bot</h3>
+        <p>Automatically sell when developers sell tokens to protect your investments from potential dumps.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="bot-item">
-        <div class="icon icon-decline">📉</div>
-        <h2>Sell on Market Decline by X%</h2>
-        <p>Sell when market drops by a set percentage</p>
+      
+      <div class="service-card">
+        <div class="service-icon icon-decline">
+          <i class="fas fa-chart-area"></i>
+        </div>
+        <h3>Sell on Market Decline Bot</h3>
+        <p>Sell when the market drops by a preset percentage to minimize losses during market downturns.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <!-- New Telegram-Integrated Offerings -->
-      <div class="bot-item">
-        <div class="icon icon-alert">🔔</div>
-        <h2>Telegram Dev Activity Alert</h2>
-        <p>Real-time Telegram alerts for dev wallet moves</p>
+      
+      <!-- Second row - Telegram integrated options -->
+      <div class="service-card">
+        <div class="service-icon icon-alert">
+          <i class="fas fa-bell"></i>
+        </div>
+        <h3>Telegram Dev Activity Alert</h3>
+        <p>Receive real-time Telegram alerts for developer wallet movements to stay ahead of market changes.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="bot-item">
-        <div class="icon icon-sniper">🎯</div>
-        <h2>Telegram Wallet Trade Sniper</h2>
-        <p>Copy and execute trades via Telegram commands</p>
+      
+      <div class="service-card">
+        <div class="service-icon icon-sniper">
+          <i class="fas fa-crosshairs"></i>
+        </div>
+        <h3>Telegram Wallet Trade Sniper</h3>
+        <p>Copy and execute trades via Telegram commands with precision timing for optimal entry and exit points.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="bot-item">
-        <div class="icon icon-notify">📩</div>
-        <h2>Telegram Memecoin Launch Notifier</h2>
-        <p>Get Telegram alerts for new memecoin launches</p>
+      
+      <div class="service-card">
+        <div class="service-icon icon-notify">
+          <i class="fas fa-paper-plane"></i>
+        </div>
+        <h3>Telegram Memecoin Launch Notifier</h3>
+        <p>Get instant Telegram alerts for new memecoin launches to be among the first investors in promising projects.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="bot-item">
-        <div class="icon icon-protect">🛡️</div>
-        <h2>Telegram Dev Dump Protector</h2>
-        <p>Telegram warnings for potential dev dumps</p>
+      
+      <div class="service-card">
+        <div class="service-icon icon-protect">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Telegram Dev Dump Protector</h3>
+        <p>Receive Telegram warnings for potential developer dumps and protect your investments with automated exit strategies.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="bot-item">
-        <div class="icon icon-swing">↕</div>
-        <h2>Telegram Market Swing Trader</h2>
-        <p>Trade market swings with Telegram triggers</p>
+      
+      <div class="service-card">
+        <div class="service-icon icon-swing">
+          <i class="fas fa-exchange-alt"></i>
+        </div>
+        <h3>Telegram Market Swing Trader</h3>
+        <p>Trade market swings with Telegram triggers to capitalize on volatility and maximize profit potential.</p>
+        <a href="#contact" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing">
+    <div class="section-header">
+      <h2>Pricing</h2>
+      <p>Transparent and competitive pricing for all your trading automation needs</p>
+    </div>
+    
+    <div class="pricing-container">
+      <div class="pricing-box">
+        <div class="pricing-header">
+          <h3>Custom Trading Bot</h3>
+          <div class="price">1 <span>SOL</span></div>
+          <p class="price-caption">Starting price for custom solutions</p>
+        </div>
+        
+        <div class="pricing-content">
+          <h4>Delivery Options</h4>
+          <ul>
+            <li>Command line tools</li>
+            <li>Graphical user interface (GUI)</li>
+            <li>Web portal access</li>
+          </ul>
+          
+          <h4>Setup Options</h4>
+          <ul>
+            <li>
+              <strong>Local Mode</strong>
+              Code and instructions for local setup included
+              <ul>
+                <li>+0.5 SOL for Zoom installation assistance</li>
+              </ul>
+            </li>
+            <li>
+              <strong>VPS Mode</strong>
+              Code and instructions for VPS setup included
+              <ul>
+                <li>+0.5 SOL for full VPS setup assistance</li>
+                <li>Includes help buying the best VPS</li>
+                <li>Server setup and configuration</li>
+                <li>Script installation and testing</li>
+              </ul>
+            </li>
+          </ul>
+          
+          <h4>Payment Terms</h4>
+          <ul>
+            <li>40% deposit required to start development</li>
+            <li>Remaining balance due upon delivery and testing</li>
+            <li>SOL payments accepted</li>
+          </ul>
+        </div>
+        
+        <div class="pricing-footer">
+          <a href="#contact" class="button">
+            <i class="fas fa-envelope"></i>
+            Request Custom Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="section-header">
+      <h2>Contact Us</h2>
+      <p>Ready to take your trading to the next level? Get in touch today.</p>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-methods">
+        <div class="contact-method">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p><a href="mailto:memecoinsbotsdev@gmail.com">memecoinsbotsdev@gmail.com</a></p>
+        </div>
+        
+        <div class="contact-method">
+          <i class="fas fa-file-alt"></i>
+          <h3>Project Brief</h3>
+          <p>Send your requirements for a custom quote</p>
+        </div>
+      </div>
+      
+      <a href="mailto:memecoinsbotsdev@gmail.com" class="button">
+        <i class="fas fa-paper-plane"></i>
+        Email Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <i class="fas fa-robot"></i>
+        Memecoins Bots Dev
+      </div>
+      
+      <div class="social-links">
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="payment-info">
+        <i class="fab fa-solana"></i>
+        <p>Payments accepted in SOL via 5PW6FRGq58CV8Qbvv9KBheiLfebSVHfbCPMa3H33nWdu</p>
+      </div>
+      
+      <p>&copy; 2025 Memecoins Bots Dev. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
